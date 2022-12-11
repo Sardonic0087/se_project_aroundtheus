@@ -4,4 +4,16 @@
   font-size: 18px;
   line-height: 22px;
   color: #545454;
+  padding-top: 67px;
+  padding-bottom: 60px;
+}
+
+@media screen and (max-width: 480px) {
+  .footer {
+    font-size: 16px;
+    line-height: 16.94px;
+    padding-top: 48px;
+    padding-bottom: 36px;
+    padding-left: 19px;
+  }
 }
