@@ -50,6 +50,7 @@
   border-color: #fff;
   grid-area: button;
   margin-left: 18px;
+  padding: 0;
   align-self: center;
   transition: opacity 0.2s ease-in-out;
 }
@@ -110,6 +111,12 @@
     margin: 0;
     height: 50px;
     width: 282px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .profile {
+    padding-left: 0;
   }
 }
 

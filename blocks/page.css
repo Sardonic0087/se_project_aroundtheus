@@ -19,6 +19,14 @@
 
 @media screen and (max-width: 480px) {
   .page__section {
-    margin: 0 19px;
+    margin: 0;
+    padding-left: 0;
+  }
+}
+
+@media screen and (max-width: 714px) {
+  .page__section {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }

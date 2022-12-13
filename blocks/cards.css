@@ -63,6 +63,10 @@
 }
 
 @media screen and (max-width: 480px) {
+  .cards {
+    padding-left: 0;
+  }
+
   .cards__list {
     display: flex;
     flex-direction: column;
