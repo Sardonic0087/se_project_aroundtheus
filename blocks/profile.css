@@ -1,6 +1,5 @@
 .profile {
   padding-top: 36px;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,14 +15,14 @@
 }
 
 .profile__info {
-  font-family: "Inter";
+  font-family: "Inter", Arial, sans-serif;
   font-weight: 500;
   display: grid;
   grid-template-areas:
     "title button"
     "description description";
   grid-template-columns: minmax(auto, 373px) auto;
-  grid-row-gap: 16px;
+  row-gap: 16px;
 }
 
 .profile__title {
@@ -32,6 +31,9 @@
   font-weight: 500;
   grid-area: title;
   margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__description {
@@ -40,6 +42,9 @@
   font-weight: 400;
   grid-area: description;
   margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__edit-button {
@@ -57,13 +62,15 @@
 
 .profile__edit-button:hover {
   opacity: 60%;
+  cursor: pointer;
 }
 
 .profile__add-button {
   background: transparent url("../images/add-button.svg") center no-repeat;
   height: 50px;
   width: 150px;
-  border-radius: 1px;
+  padding: 0;
+  border-radius: 2px;
   border-color: #fff;
   margin-left: auto;
   transition: opacity 0.2s ease-in-out;
@@ -71,15 +78,19 @@
 
 .profile__add-button:hover {
   opacity: 60%;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 480px) {
   .profile {
     flex-direction: column;
+    padding-left: 0;
+    max-width: 320px;
   }
 
   .profile__picture {
     margin-right: 0;
+    margin-bottom: 30px;
   }
 
   .profile__info {
@@ -94,7 +105,10 @@
   .profile__title {
     font-size: 22px;
     line-height: 27px;
-    padding-top: 30px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   .profile__description {
@@ -103,27 +117,22 @@
     justify-content: center;
     font-size: 14px;
     line-height: 17px;
-
     padding-bottom: 36px;
   }
 
   .profile__add-button {
     margin: 0;
-    height: 50px;
     width: 282px;
   }
-}
 
-@media screen and (max-width: 480px) {
-  .profile {
-    padding-left: 0;
+  .profile__edit-button {
+    height: 18px;
+    width: 18px;
   }
 }
 
-@media screen and (max-width: 714px) {
-  .profile__title {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+@media screen and (max-width: 800px) {
+  .profile {
+    max-width: 768px;
   }
 }
