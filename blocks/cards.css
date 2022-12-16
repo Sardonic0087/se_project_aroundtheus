@@ -17,8 +17,6 @@
 
 @media screen and (max-width: 480px) {
   .cards {
-    padding-left: 0;
-    padding-right: 0;
     padding-top: 36px;
   }
 
@@ -29,7 +27,5 @@
     width: 100%;
     margin: 0;
     column-gap: 0;
-    padding-left: 0;
-    padding-right: 0;
   }
 }
