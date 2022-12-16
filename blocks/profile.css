@@ -51,8 +51,9 @@
   background: transparent url("../images/edit-button.svg") center no-repeat;
   height: 24px;
   width: 24px;
-  border-radius: 1px;
+  border-width: 1px;
   border-color: #fff;
+  border-style: solid;
   grid-area: button;
   margin-left: 18px;
   padding: 0;
@@ -72,6 +73,8 @@
   padding: 0;
   border-radius: 2px;
   border-color: #fff;
+  border-style: solid;
+  border-width: 2px;
   margin-left: auto;
   transition: opacity 0.2s ease-in-out;
 }
@@ -85,6 +88,7 @@
   .profile {
     flex-direction: column;
     padding-left: 0;
+    padding-right: 0;
     max-width: 320px;
   }
 
@@ -97,15 +101,17 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding-left: 60px;
-    padding-right: 39px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 282px;
     width: 100%;
   }
 
   .profile__title {
     font-size: 22px;
     line-height: 27px;
-
+    max-width: 196px;
+    width: 100%;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -128,6 +134,7 @@
   .profile__edit-button {
     height: 18px;
     width: 18px;
+    margin-left: 10px;
   }
 }
 

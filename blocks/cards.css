@@ -18,15 +18,18 @@
 @media screen and (max-width: 480px) {
   .cards {
     padding-left: 0;
+    padding-right: 0;
     padding-top: 36px;
   }
 
   .cards__list {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    width: 100%;
     margin: 0;
     column-gap: 0;
+    padding-left: 0;
+    padding-right: 0;
   }
 }

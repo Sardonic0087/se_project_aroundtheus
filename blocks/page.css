@@ -19,16 +19,29 @@
 
 @media screen and (max-width: 480px) {
   .page {
-    max-width: 320px;
+    max-width: 282px;
+    width: 100%;
   }
 
   .page__section {
+    max-width: 282px;
+    width: 100%;
     margin: 0;
     padding-left: 0;
+    padding-right: 0;
+  }
+
+  .page__content {
+    align-items: center;
   }
 }
 
 @media screen and (max-width: 800px) {
+  .page {
+    max-width: 768px;
+    width: 100%;
+  }
+
   .page__section {
     padding-left: 20px;
     padding-right: 20px;
