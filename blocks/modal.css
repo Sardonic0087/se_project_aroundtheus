@@ -62,6 +62,7 @@
   color: #000;
   border-bottom: 1px solid #000;
   padding-bottom: 13.26px;
+  text-align: justify;
 }
 
 .modal__input_name {

@@ -4,13 +4,13 @@
   flex-direction: column;
   border-radius: 10px;
   max-width: 282px;
-
   overflow: hidden;
 }
 
 .card__image {
   height: 282px;
   width: 282px;
+  color: #fff;
 }
 
 .card__content {
