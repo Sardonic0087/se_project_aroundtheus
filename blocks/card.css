@@ -10,7 +10,7 @@
 .card__image {
   height: 282px;
   width: 282px;
-  color: #fff;
+  background-size: cover;
 }
 
 .card__content {

@@ -1,37 +1,44 @@
-const modal = document.querySelector(".modal");
-const editModal = document.querySelector(".profile__edit-button");
-const closeModal = document.querySelector(".modal__button-close");
-const modalForm = document.querySelector(".modal__form");
-const modalInputName = modalForm.querySelector(".modal__input_name");
+const profileModal = document.querySelector(".modal");
+const editProfileModalButton = document.querySelector(".profile__edit-button");
+const closeProfileModalButton = profileModal.querySelector(
+  ".modal__button-close"
+);
+const profileModalForm = profileModal.querySelector(".modal__form");
+const profileModalInputName =
+  profileModalForm.querySelector(".modal__input_name");
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
-const modalInputDescription = modalForm.querySelector(
+const profileModalInputDescription = profileModalForm.querySelector(
   ".modal__input_description"
 );
 
-function modalOpen() {
-  modal.classList.add("modal-open");
+function openModal() {
+  profileModal.classList.add("modal-open");
 }
 
-function modalClose() {
-  modal.classList.remove("modal-open");
+function closeModal() {
+  profileModal.classList.remove("modal-open");
 }
 
-editModal.addEventListener("click", function () {
-  modalInputName.value = profileTitle.textContent;
-  modalInputDescription.value = profileDescription.textContent;
-  modalOpen();
-});
+function fillProfileForm() {
+  profileModalInputName.value = profileTitle.textContent;
+  profileModalInputDescription.value = profileDescription.textContent;
+}
 
-closeModal.addEventListener("click", modalClose);
+function openEditProfileModal() {
+  fillProfileForm();
+  openModal();
+}
 
-modalForm.addEventListener("submit", function (evt) {
+editProfileModalButton.addEventListener("click", openEditProfileModal);
+
+closeProfileModalButton.addEventListener("click", closeModal);
+
+profileModalForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
   const nameValue = evt.target.name.value;
   const descriptionValue = evt.target.description.value;
-  console.log(nameValue);
-  console.log(descriptionValue);
   profileTitle.textContent = nameValue;
   profileDescription.textContent = descriptionValue;
-  modalClose();
+  closeModal();
 });

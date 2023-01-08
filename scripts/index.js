@@ -1,22 +1,7 @@
 const initialCards = [
   {
-    name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-  },
-
-  {
-    name: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
-  },
-
-  {
-    name: "Bald Mountains",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
-  },
-
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
+    name: "Lago di Braies",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 
   {
@@ -25,13 +10,28 @@ const initialCards = [
   },
 
   {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
+    name: "Latemar",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
+  },
+
+  {
+    name: "Bald Mountains",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
+  },
+
+  {
+    name: "Lake Louise",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
+  },
+
+  {
+    name: "Yosemite Valley",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
   },
 ];
 const cardsList = document.querySelector(".cards__list");
 
-initialCards.forEach((card) => {
+function createCard(data) {
   const cardTemplate = document
     .querySelector("#card-template")
     .content.querySelector(".card");
@@ -40,8 +40,15 @@ initialCards.forEach((card) => {
   const cardImage = cardElement.querySelector(".card__image");
   const cardText = cardElement.querySelector(".card__text");
 
-  cardImage.style.backgroundImage = `url(${card.link})`;
-  cardText.textContent = card.name;
-  cardImage.alt = card.name;
-  cardsList.append(cardElement);
-});
+  cardImage.style.backgroundImage = `url(${data.link})`;
+  cardText.textContent = data.name;
+
+  return cardElement;
+}
+
+function renderCard(data) {
+  const cardElement = createCard(data);
+  cardsList.prepend(cardElement);
+}
+
+initialCards.forEach(renderCard);
