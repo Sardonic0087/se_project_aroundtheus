@@ -62,6 +62,7 @@
 
 .card__like-button_active {
   background: transparent url("../images/Union.svg") center no-repeat;
+  background-size: contain;
 }
 
 .card__like-button:hover {
