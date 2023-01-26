@@ -53,7 +53,7 @@
   height: auto;
 }
 
-.modal__picture_description {
+.modal__picture-description {
   position: absolute;
   left: 0;
   bottom: -40px;
