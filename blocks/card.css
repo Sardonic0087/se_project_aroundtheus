@@ -11,6 +11,21 @@
   height: 282px;
   width: 282px;
   background-size: cover;
+  position: relative;
+}
+
+.card__remove {
+  height: 19.3px;
+  width: 18px;
+  position: absolute;
+  right: 15px;
+  top: 18px;
+}
+
+.card__remove:hover {
+  opacity: 0.5;
+  cursor: pointer;
+  z-index: 1;
 }
 
 .card__content {
@@ -43,6 +58,10 @@
   border-style: none;
   transition: opacity 0.2s ease-in-out;
   background-size: contain;
+}
+
+.card__like-button_active {
+  background: transparent url("../images/Union.svg") center no-repeat;
 }
 
 .card__like-button:hover {
