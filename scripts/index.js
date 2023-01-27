@@ -30,6 +30,7 @@ const initialCards = [
   },
 ];
 const cardsList = document.querySelector(".cards__list");
+const closeModals = document.querySelectorAll(".modal__button-close");
 const editModal = document.querySelector("#edit-modal");
 const addModal = document.querySelector("#add-modal");
 const picModal = document.querySelector("#picture-modal");
@@ -37,6 +38,7 @@ const picModalPreview = picModal.querySelector(".modal__preview-image");
 const picModalText = picModal.querySelector(".modal__picture-description");
 const editProfileModalButton = document.querySelector(".profile__edit-button");
 const addProfileModalButton = document.querySelector(".profile__add-button");
+
 const closeEditProfileModalButton = editModal.querySelector(
   ".modal__button-close"
 );
@@ -56,12 +58,17 @@ const profileModalInputDescription = profileModalForm.querySelector(
 const addModalForm = addModal.querySelector(".modal__form");
 
 function openModal(modal) {
-  modal.classList.add("modal-open");
+  modal.classList.add("modal_open");
 }
 
 function closeModal(modal) {
-  modal.classList.remove("modal-open");
+  modal.classList.remove("modal_open");
 }
+
+closeModals.forEach((button) => {
+  const modal = button.closest(".modal");
+  button.addEventListener("click", () => closeModal(modal));
+});
 
 function fillProfileForm() {
   profileModalInputName.value = profileTitle.textContent;
@@ -78,17 +85,8 @@ function openAddProfileModal() {
 }
 
 editProfileModalButton.addEventListener("click", openEditProfileModal);
-closeEditProfileModalButton.addEventListener("click", function () {
-  closeModal(editModal);
-});
-closeAddProfileModalButton.addEventListener("click", function () {
-  closeModal(addModal);
-});
-addProfileModalButton.addEventListener("click", openAddProfileModal);
 
-closePicModalButton.addEventListener("click", function () {
-  closeModal(picModal);
-});
+addProfileModalButton.addEventListener("click", openAddProfileModal);
 
 profileModalForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
@@ -104,12 +102,12 @@ addModalForm.addEventListener("submit", function (evt) {
   const cardTitle = evt.target.title.value;
   const cardLink = evt.target.link.value;
   renderCard({ name: cardTitle, link: cardLink });
+  evt.target.reset();
+
   closeModal(addModal);
 });
 
-initialCards.forEach(function (cardData) {
-  renderCard(cardData);
-});
+initialCards.forEach(renderCard);
 
 function createCard(data) {
   const cardTemplate = document
