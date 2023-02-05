@@ -106,12 +106,20 @@
   margin-bottom: 48px;
 }
 
+.modal__label {
+  position: relative;
+}
+
 .modal__button {
   border-style: none;
 }
 
 .modal__button:hover {
   cursor: pointer;
+}
+
+.modal__button:disabled {
+  opacity: 0.5;
 }
 
 .modal__button-close {
@@ -144,6 +152,25 @@
 
 .modal__button-save:hover {
   opacity: 0.8;
+}
+
+.modal__wrapper {
+  position: relative;
+}
+
+.modal__error {
+  font-size: 12px;
+  line-height: 15px;
+  color: red;
+  opacity: 0;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  transition: opacity 0.3s;
+  z-index: 1;
+}
+.modal__error_visible {
+  opacity: 1;
 }
 
 @media screen and (max-width: 480px) {
