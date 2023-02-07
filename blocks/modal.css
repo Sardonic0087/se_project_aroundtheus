@@ -118,10 +118,6 @@
   cursor: pointer;
 }
 
-.modal__button:disabled {
-  opacity: 0.5;
-}
-
 .modal__button-close {
   background: transparent url("../images/Close-Icon.svg") center no-repeat;
 
@@ -153,12 +149,21 @@
 .modal__button-save:hover {
   opacity: 0.8;
 }
+.modal__button-save:disabled {
+  background: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 2px;
+  color: #000;
+  opacity: 0.15;
+}
 
 .modal__wrapper {
   position: relative;
 }
 
 .modal__error {
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
   font-size: 12px;
   line-height: 15px;
   color: red;
@@ -168,6 +173,10 @@
   left: 0;
   transition: opacity 0.3s;
   z-index: 1;
+}
+
+.modal__input_type_error {
+  border-bottom: 1px solid red;
 }
 .modal__error_visible {
   opacity: 1;

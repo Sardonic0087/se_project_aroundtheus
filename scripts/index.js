@@ -29,6 +29,7 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
   },
 ];
+
 const cardsList = document.querySelector(".cards__list");
 const closeModals = document.querySelectorAll(".modal__button-close");
 const editModal = document.querySelector("#edit-modal");
@@ -38,7 +39,7 @@ const picModalPreview = picModal.querySelector(".modal__preview-image");
 const picModalText = picModal.querySelector(".modal__picture-description");
 const editProfileModalButton = document.querySelector(".profile__edit-button");
 const addProfileModalButton = document.querySelector(".profile__add-button");
-
+const modals = document.querySelectorAll(".modal");
 const closeEditProfileModalButton = editModal.querySelector(
   ".modal__button-close"
 );
@@ -68,6 +69,22 @@ function closeModal(modal) {
 closeModals.forEach((button) => {
   const modal = button.closest(".modal");
   button.addEventListener("click", () => closeModal(modal));
+});
+
+document.addEventListener("keydown", function (evt) {
+  if (evt.key === "Escape" && document.querySelector(".modal_open")) {
+    document.querySelector(".modal_open").classList.remove("modal_open");
+  }
+});
+
+function closeModalAlt(evt) {
+  if (evt.target.classList.contains("modal")) {
+    closeModal(evt.target);
+  }
+}
+
+modals.forEach((modal) => {
+  modal.addEventListener("click", closeModalAlt);
 });
 
 function fillProfileForm() {
