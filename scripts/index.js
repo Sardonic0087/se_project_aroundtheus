@@ -124,11 +124,17 @@ addModalForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
   const cardTitle = evt.target.title.value;
   const cardLink = evt.target.link.value;
+  const cardFormSubmitButton = addModalForm.querySelector(".modal__button");
   renderCard({ name: cardTitle, link: cardLink });
   evt.target.reset();
 
   closeModal(addModal);
-  toggleButtonState(inputElements, submitButton, config);
+
+  toggleButtonState(
+    [evt.target.title, evt.target.link],
+    cardFormSubmitButton,
+    config
+  );
 });
 
 initialCards.forEach(renderCard);

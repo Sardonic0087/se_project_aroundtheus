@@ -11,6 +11,7 @@
   height: 282px;
   width: 282px;
   background-size: cover;
+  cursor: pointer;
 }
 
 .card__image_container {
