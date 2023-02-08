@@ -114,7 +114,7 @@
   border-style: none;
 }
 
-.modal__button:hover {
+.modal__button:hover:not(:disabled) {
   cursor: pointer;
 }
 
