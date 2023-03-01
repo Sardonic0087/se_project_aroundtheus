@@ -1,3 +1,13 @@
+import {
+  closeModalByEscape,
+  closeModalOnOutsideClick,
+  openModal,
+  closeModal,
+} from "./utils";
+
+import FormValidator from "./FormValidator";
+import Card from "./Card";
+
 const initialCards = [
   {
     name: "Lago di Braies",
@@ -52,42 +62,35 @@ const profileModalInputName =
   profileModalForm.querySelector(".modal__input_name");
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
-
+const cardSelector = document.querySelector("#card-template");
 const profileModalInputDescription = profileModalForm.querySelector(
   ".modal__input_description"
 );
 const addModalForm = addModal.querySelector(".modal__form");
 
-function closeModalByEscape(evt) {
-  if (evt.key === "Escape") {
-    const openedModal = document.querySelector(".modal_open");
+const validationSettings = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
 
-    closeModal(openedModal);
-  }
-}
+const editFormValidator = new FormValidator(
+  validationSettings,
+  profileModalForm
+);
 
-function openModal(modal) {
-  modal.classList.add("modal_open");
-  document.addEventListener("keydown", closeModalByEscape);
-  document.addEventListener("mousedown", closeModalOnOutsideClick);
-}
+const addFormValidator = new FormValidator(validationSettings, addModalForm);
 
-function closeModal(modal) {
-  modal.classList.remove("modal_open");
-  document.removeEventListener("keydown", closeModalByEscape);
-  document.removeEventListener("mousedown", closeModalOnOutsideClick);
-}
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
 
 closeModals.forEach((button) => {
   const modal = button.closest(".modal");
   button.addEventListener("click", () => closeModal(modal));
 });
-
-function closeModalOnOutsideClick(evt) {
-  if (evt.target.classList.contains("modal")) {
-    closeModal(evt.target);
-  }
-}
 
 modals.forEach((modal) => {
   modal.addEventListener("mousedown", closeModalOnOutsideClick);
@@ -139,39 +142,39 @@ addModalForm.addEventListener("submit", function (evt) {
 
 initialCards.forEach(renderCard);
 
-function createCard(data) {
-  const cardTemplate = document
-    .querySelector("#card-template")
-    .content.querySelector(".card");
+//function createCard(data) {
+//const cardTemplate = document
+//.querySelector("#card-template")
+//.content.querySelector(".card");
 
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImage = cardElement.querySelector(".card__image");
+//const cardElement = cardTemplate.cloneNode(true);
+//const cardImage = cardElement.querySelector(".card__image");
 
-  const cardText = cardElement.querySelector(".card__text");
-  const cardLike = cardElement.querySelector(".card__like-button");
-  const cardRemove = cardElement.querySelector(".card__remove");
+//const cardText = cardElement.querySelector(".card__text");
+//const cardLike = cardElement.querySelector(".card__like-button");
+//const cardRemove = cardElement.querySelector(".card__remove");
 
-  cardImage.style.backgroundImage = `url(${data.link})`;
-  cardText.textContent = data.name;
-  function cardToggle() {
-    cardLike.classList.toggle("card__like-button_active");
-  }
-  function removeElement() {
-    cardElement.remove();
-  }
-  cardLike.addEventListener("click", cardToggle);
-  cardRemove.addEventListener("click", removeElement);
-  cardImage.addEventListener("click", function () {
-    picModalPreview.src = data.link;
-    picModalText.textContent = data.name;
-    picModalPreview.alt = data.name;
-    openModal(picModal);
-  });
+//cardImage.style.backgroundImage = `url(${data.link})`;
+//cardText.textContent = data.name;
+//function cardToggle() {
+//cardLike.classList.toggle("card__like-button_active");
+//}
+//function removeElement() {
+//cardElement.remove();
+//}
+//cardLike.addEventListener("click", cardToggle);
+// cardRemove.addEventListener("click", removeElement);
+//cardImage.addEventListener("click", function () {
+// picModalPreview.src = data.link;
+//  picModalText.textContent = data.name;
+//  picModalPreview.alt = data.name;
+// openModal(picModal);
+// });
 
-  return cardElement;
-}
+//return cardElement;
+//}
 
 function renderCard(data) {
-  const cardElement = createCard(data);
-  cardsList.prepend(cardElement);
+  const cardElement = new Card(data, cardSelector);
+  cardsList.prepend(cardElement.getView());
 }
