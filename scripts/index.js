@@ -38,12 +38,12 @@ const initialCards = [
   },
 ];
 
-const cardData = {
+const data = {
   name: "Lago di Braies",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
 };
 
-const card = new Card(cardData, "#card-template");
+const card = new Card(data, "#card-template");
 card.getView();
 const cardsList = document.querySelector(".cards__list");
 const closeModals = document.querySelectorAll(".modal__button-close");
@@ -169,8 +169,21 @@ addModalForm.addEventListener("submit", function (evt) {
     config
   );
 });
+function createCard(data) {
+  const card = new Card(data, "#card-template");
 
-initialCards.forEach(renderCard);
+  return card.getView();
+}
+
+function renderCard(data, cardsList) {
+  const card = createCard(data);
+
+  cardsList.prepend(card);
+}
+
+initialCards.forEach(function (data) {
+  renderCard(data, cardsList);
+});
 
 /*function createCard(data) {
   const cardTemplate = document
@@ -204,8 +217,3 @@ initialCards.forEach(renderCard);
   return cardElement;
 }
 */
-
-function renderCard(data) {
-  const cardElement = new Card(data, cardSelector);
-  cardsList.prepend(cardElement);
-}

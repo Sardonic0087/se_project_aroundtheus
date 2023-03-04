@@ -1,3 +1,5 @@
+import { openModal } from "./utils.js";
+
 export default class Card {
   constructor({ name, link }, cardSelector) {
     this._name = name;
@@ -6,7 +8,7 @@ export default class Card {
   }
 
   _handleLikeButton() {
-    this._cardElementlement
+    this._cardElement
       .querySelector(".card__like-button")
       .classList.toggle("card__like-button_active");
   }
@@ -34,9 +36,13 @@ export default class Card {
     this._cardElement
       .querySelector(".card__image")
       .addEventListener("click", function () {
-        this._picModalPreview.src = data.link;
-        this._picModalText.textContent = data.name;
-        this._picModalPreview.alt = data.name;
+        const picModalPreview = document.querySelector(".modal__preview-image");
+        const picModalText = document.querySelector(
+          ".modal__picture-description"
+        );
+        picModalPreview.src = this._link;
+        picModalText.textContent = this._name;
+        picModalPreview.alt = this._name;
         openModal(this._picModal);
       });
   }
@@ -56,9 +62,10 @@ export default class Card {
     this._setEventListeners();
 
     return this._cardElement;
+
     //get the card view
     //set event listeners
-    this._setEventListeners();
+
     //return element
   }
 }
