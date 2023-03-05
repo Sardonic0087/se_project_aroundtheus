@@ -158,12 +158,12 @@ addModalForm.addEventListener("submit", function (evt) {
   const cardTitle = evt.target.title.value;
   const cardLink = evt.target.link.value;
   const cardFormSubmitButton = addModalForm.querySelector(".modal__button");
-  renderCard({ name: cardTitle, link: cardLink });
+  renderCard({ name: cardTitle, link: cardLink }, cardsList);
   evt.target.reset();
 
   closeModal(addModal);
 
-  toggleButtonState(
+  addFormValidator.toggleButtonState(
     [evt.target.title, evt.target.link],
     cardFormSubmitButton,
     config
