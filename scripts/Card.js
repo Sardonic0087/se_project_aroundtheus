@@ -11,20 +11,12 @@ export default class Card {
   }
 
   _handleLikeButton() {
-    this._cardElement
-      .querySelector(".card__like-button")
-      .classList.toggle("card__like-button_active");
+    this._cardLike.classList.toggle("card__like-button_active");
   }
 
   _handleDeleteButton() {
     this._cardElement.remove();
     this._cardElement = null;
-  }
-
-  _cardToggle() {
-    this._cardElement
-      .querySelector(".card__like-button")
-      .classList.toggle("card__like-button_active");
   }
 
   _handlePreviewPicture(picModal) {
@@ -35,32 +27,24 @@ export default class Card {
   }
 
   _setEventListeners() {
-    this._cardElement
-      .querySelector(".card__like-button")
-      .addEventListener("click", () => {
-        this._cardToggle();
-      });
-    this._cardElement
-      .querySelector(".card__remove")
-      .addEventListener("click", () => {
-        this._handleDeleteButton();
-      });
-    this._cardElement
-      .querySelector(".card__image")
-      .addEventListener("click", () => {
-        this._handlePreviewPicture(picModal);
-      });
+    this._cardLike.addEventListener("click", () => {
+      this._handleLikeButton();
+    });
+    this._cardRemove.addEventListener("click", () => {
+      this._handleDeleteButton();
+    });
+    this._cardImage.addEventListener("click", () => {
+      this._handlePreviewPicture(picModal);
+    });
   }
   getView() {
     this._cardElement = document
       .querySelector(this._cardSelector)
       .content.querySelector(".card")
       .cloneNode(true);
-    console.log(this._cardElement);
+
     this._cardImage = this._cardElement.querySelector(".card__image");
-    this._cardElement.querySelector(
-      ".card__image"
-    ).style.backgroundImage = `url(${this._link})`;
+    this._cardImage.style.backgroundImage = `url(${this._link})`;
     this._cardElement.querySelector(".card__text").textContent = this._name;
     this._cardLike = this._cardElement.querySelector(".card__like-button");
     this._cardRemove = this._cardElement.querySelector(".card__remove");
