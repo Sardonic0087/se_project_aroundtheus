@@ -96,12 +96,11 @@ function fillProfileForm() {
 function openEditProfileModal() {
   fillProfileForm();
   openModal(editProfileModal);
-  FormValidator.resetValidation(editProfileModal);
+  editFormValidator.resetValidation();
 }
 
 function openAddProfileModal() {
   openModal(addModal);
-  FormValidator.resetValidation(addModal);
 }
 
 editProfileModalButton.addEventListener("click", openEditProfileModal);
