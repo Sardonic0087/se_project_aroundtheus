@@ -1,4 +1,10 @@
+import "../pages/index.css";
 import Card from "./Card.js";
+import Popup from "./Popup.js";
+import PopupWithForm from "./PopupWithForm.js";
+import PopupWithImage from "./PopupWithImage.js";
+import Section from "./Section.js";
+import UserInfo from "./UserInfo.js";
 import {
   closeModalByEscape,
   closeModalOnOutsideClick,

@@ -4,10 +4,11 @@ const picModalText = document.querySelector(".modal__picture-description");
 const picModal = document.querySelector("#picture-modal");
 
 export default class Card {
-  constructor({ name, link }, cardSelector) {
+  constructor({ name, link }, cardSelector, handleCardClick) {
     this._name = name;
     this._link = link;
     this._cardSelector = cardSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _handleLikeButton() {
@@ -34,7 +35,7 @@ export default class Card {
       this._handleDeleteButton();
     });
     this._cardImage.addEventListener("click", () => {
-      this._handlePreviewPicture(picModal);
+      this._handleCardClick(this._name, this._link);
     });
   }
   getView() {
@@ -58,3 +59,18 @@ export default class Card {
     //return element
   }
 }
+
+/*
+Original _setEventListeners
+ _setEventListeners() {
+    this._cardLike.addEventListener("click", () => {
+      this._handleLikeButton();
+    });
+    this._cardRemove.addEventListener("click", () => {
+      this._handleDeleteButton();
+    });
+    this._cardImage.addEventListener("click", () => {
+      this._handlePreviewPicture(picModal);
+    });
+  }
+  */

@@ -12,14 +12,13 @@
     />
     <meta name="author" content="Irvin Valentic" />
     <meta name="keywords" content="HTML, CSS, JavaScript" />
-    <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body class="page">
     <div class="page__content">
       <header class="header page__section">
         <img
           class="header__logo"
-          src="./images/header__image.svg"
+          src="<%=require(`./images/header__image.svg`)%>"
           alt="Around the U.S. image"
         />
       </header>
@@ -27,7 +26,7 @@
         <section class="profile page__section">
           <img
             class="profile__picture"
-            src="./images/jacques-cousteau.jpg"
+            src="<%=require(`./images/jacques-cousteau.jpg`)%>"
             alt="Jacques Cousteau Profile Picture"
           />
           <div class="profile__info">
@@ -146,7 +145,7 @@
       <li class="card">
         <div class="card__image_container">
           <div class="card__image"></div>
-          <img class="card__remove" src="./images/Trash.svg" />
+          <img class="card__remove" src="<%=require(`./images/Trash.svg`)%>" />
         </div>
 
         <div class="card__content">
@@ -159,6 +158,5 @@
         </div>
       </li>
     </template>
-    <script src="./scripts/index.js" type="module" defer></script>
   </body>
 </html>
