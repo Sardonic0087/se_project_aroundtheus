@@ -85,6 +85,55 @@ editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 //------------------------------------------------------------------------------
 
+const newModalImage = new PopupWithImage({
+  popupSelector: ".modal__preview-image",
+});
+newModalImage.setEventListeners();
+
+const createCard = (cardData) => {
+  const card = new Card(cardData, "#card-template", (data) => {
+    newModalImage.open(data);
+  });
+  return card.getView();
+};
+
+const newCardSection = new Section(
+  {
+    items: initialCards,
+    renderer: createCard,
+  },
+  ".cards__list"
+);
+newCardSection.renderItems();
+///////////////////////////////////
+const newProfileModal = new PopupWithForm("#edit-modal", (input) => {
+  newUserInfo.setUserInfo(input.name, input.title);
+  editFormValidator.disableButton();
+});
+
+const newCardModal = new PopupWithForm("#add-modal", (input) => {
+  const card = createCard({ name: input.title, link: input.src });
+  newCardSection.addItem(card);
+});
+
+const newUserInfo = new UserInfo({
+  name: profileTitle.textContent,
+  title: profileDescription.textContent,
+});
+
+newCardModal.setEventListeners();
+newProfileModal.setEventListeners();
+
+addProfileModalButton.addEventListener("click", () => {
+  newCardModal.open();
+  addFormValidator.disableButton();
+});
+editProfileModalButton.addEventListener("click", (input) => {
+  newProfileModal.open();
+  editFormValidator.disableButton();
+});
+////////////////////////
+/*
 closeModals.forEach((button) => {
   const modal = button.closest(".modal");
   button.addEventListener("click", () => closeModal(modal));
@@ -112,8 +161,9 @@ function openAddProfileModal() {
 editProfileModalButton.addEventListener("click", openEditProfileModal);
 
 addProfileModalButton.addEventListener("click", openAddProfileModal);
+/*
 
-profileModalForm.addEventListener("submit", function (evt) {
+/*profileModalForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
   const nameValue = evt.target.name.value;
   const descriptionValue = evt.target.description.value;
@@ -134,6 +184,22 @@ addModalForm.addEventListener("submit", function (evt) {
 
   addFormValidator.toggleButtonState();
 });
+
+*/
+
+/*const renderedCards = new Section(
+  {
+    cards: initialCards,
+    renderer: (data) => {
+      renderedCards.addItem(createCard(data));
+    },
+  },
+  returncardsList
+);
+const newCardPopup = new PopupWithForm("#add-modal", this._handleFormSubmit);
+newCardPopup.open();
+newCardPopup.close();
+
 function createCard(data) {
   const card = new Card(data, "#card-template");
 
@@ -148,7 +214,8 @@ function renderCard(data, cardsList) {
 
 initialCards.forEach(function (data) {
   renderCard(data, cardsList);
-});
+}); 
+*/
 
 /*
 Universal validators
