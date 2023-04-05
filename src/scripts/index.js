@@ -86,7 +86,7 @@ addFormValidator.enableValidation();
 //------------------------------------------------------------------------------
 
 const newModalImage = new PopupWithImage({
-  popupSelector: ".modal__preview-image",
+  popupSelector: "#picture-modal",
 });
 newModalImage.setEventListeners();
 
