@@ -1,4 +1,4 @@
-import { openModal } from "./utils.js";
+import { openModal } from "../scripts/utils.js";
 const picModalPreview = document.querySelector(".modal__preview-image");
 const picModalText = document.querySelector(".modal__picture-description");
 const picModal = document.querySelector("#picture-modal");
