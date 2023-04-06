@@ -91,8 +91,8 @@ const newModalImage = new PopupWithImage({
 newModalImage.setEventListeners();
 
 const createCard = (cardData) => {
-  const card = new Card(cardData, "#card-template", (data) => {
-    newModalImage.open(data);
+  const card = new Card(cardData, "#card-template", (name, link) => {
+    newModalImage.open(name, link);
   });
   return card.getView();
 };
@@ -109,19 +109,20 @@ const newCardSection = new Section(
 );
 newCardSection.renderItems();
 ///////////////////////////////////
+
+const newUserInfo = new UserInfo({
+  nameSelector: ".profile__title",
+  jobSelector: ".profile__description",
+});
+
 const newProfileModal = new PopupWithForm("#edit-modal", (input) => {
   newUserInfo.setUserInfo(input.name, input.title);
-  editFormValidator.disableButton();
+  editFormValidator.toggleButtonState();
 });
 
 const newCardModal = new PopupWithForm("#add-modal", (input) => {
-  const card = createCard({ name: input.title, link: input.src });
+  const card = createCard({ name: input.title, link: input.link });
   newCardSection.addItem(card);
-});
-
-const newUserInfo = new UserInfo({
-  name: profileTitle.textContent,
-  title: profileDescription.textContent,
 });
 
 newCardModal.setEventListeners();
@@ -129,11 +130,11 @@ newProfileModal.setEventListeners();
 
 addProfileModalButton.addEventListener("click", () => {
   newCardModal.open();
-  addFormValidator.disableButton();
+  addFormValidator.toggleButtonState();
 });
 editProfileModalButton.addEventListener("click", (input) => {
   newProfileModal.open();
-  editFormValidator.disableButton();
+  editFormValidator.toggleButtonState();
 });
 ////////////////////////
 /*
