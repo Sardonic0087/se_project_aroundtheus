@@ -116,7 +116,7 @@ const newUserInfo = new UserInfo({
 });
 
 const newProfileModal = new PopupWithForm("#edit-modal", (input) => {
-  newUserInfo.setUserInfo(input.name, input.title);
+  newUserInfo.setUserInfo(input.name, input.job);
   editFormValidator.toggleButtonState();
 });
 
@@ -132,10 +132,24 @@ addProfileModalButton.addEventListener("click", () => {
   newCardModal.open();
   addFormValidator.toggleButtonState();
 });
-editProfileModalButton.addEventListener("click", (input) => {
+editProfileModalButton.addEventListener("click", () => {
+  profileTitle.value = newUserInfo.nameSelector;
+  profileDescription.value = newUserInfo.jobSelector;
   newProfileModal.open();
+
   editFormValidator.toggleButtonState();
 });
+
+//
+//editProfileModalButton.addEventListener("click", () => {
+//const user = UserInfo.getUserInfo();
+//profileTitle.value = user.name;
+//profileDescription.value = user.job;
+// newProfileModal.open();
+
+//editFormValidator.toggleButtonState();
+//});
+
 ////////////////////////
 /*
 closeModals.forEach((button) => {

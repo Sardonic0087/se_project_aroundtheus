@@ -6,7 +6,8 @@ export default class Popup {
   open() {
     //opens popup
     this._popupElement.classList.add("modal_open");
-    this.setEventListeners();
+    //this.setEventListeners();
+    document.addEventListener("keyup", this._handleEscClose);
   }
 
   close() {
@@ -15,13 +16,13 @@ export default class Popup {
     document.removeEventListener("keyup", this._handleEscClose);
   }
 
-  _handleEscClose(evt) {
+  _handleEscClose = (evt) => {
     //listens for escape button
 
     if (evt.key === "Escape") {
       this.close();
     }
-  }
+  };
 
   _handleOverlay(evt) {
     if (evt.target.classList.contains("modal_open")) {
