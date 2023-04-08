@@ -5,13 +5,13 @@ export default class UserInfo {
   }
   getUserInfo() {
     return {
-      name: this._nameElement.textcontent,
-      job: this._jobElement.textcontent,
+      name: this._nameElement.textContent,
+      job: this._jobElement.texContent,
     };
   }
 
   setUserInfo(name, job) {
-    this._nameElement.textcontent = name;
-    this._jobElement.textcontent = job;
+    this._nameElement.textContent = name;
+    this._jobElement.textContent = job;
   }
 }

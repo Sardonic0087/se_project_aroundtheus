@@ -5,12 +5,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
-import {
-  closeModalByEscape,
-  closeModalOnOutsideClick,
-  openModal,
-  closeModal,
-} from "../scripts/utils.js";
+
 import FormValidator from "../components/FormValidator.js";
 const initialCards = [
   {
@@ -115,8 +110,8 @@ const newUserInfo = new UserInfo({
   jobSelector: ".profile__description",
 });
 
-const newProfileModal = new PopupWithForm("#edit-modal", (input) => {
-  newUserInfo.setUserInfo(input.name, input.job);
+const newProfileModal = new PopupWithForm("#edit-modal", (values) => {
+  newUserInfo.setUserInfo(values.name, values.description);
   editFormValidator.toggleButtonState();
 });
 
@@ -133,8 +128,9 @@ addProfileModalButton.addEventListener("click", () => {
   addFormValidator.toggleButtonState();
 });
 editProfileModalButton.addEventListener("click", () => {
-  profileTitle.value = newUserInfo.nameSelector;
-  profileDescription.value = newUserInfo.jobSelector;
+  const user = newUserInfo.getUserInfo();
+  profileTitle.value = user.name;
+  profileDescription.value = user.job;
   newProfileModal.open();
 
   editFormValidator.toggleButtonState();
