@@ -1,7 +1,3 @@
-const picModalPreview = document.querySelector(".modal__preview-image");
-const picModalText = document.querySelector(".modal__picture-description");
-const picModal = document.querySelector("#picture-modal");
-
 export default class Card {
   constructor({ name, link }, cardSelector, handleCardClick) {
     this._name = name;
@@ -17,12 +13,6 @@ export default class Card {
   _handleDeleteButton() {
     this._cardElement.remove();
     this._cardElement = null;
-  }
-
-  _handlePreviewPicture(picModal) {
-    picModalPreview.src = this._link;
-    picModalText.textContent = this._name;
-    picModalPreview.alt = this._name;
   }
 
   _setEventListeners() {
