@@ -1,6 +1,9 @@
 export default class Popup {
   constructor({ popupSelector }) {
     this._popupElement = document.querySelector(popupSelector);
+    this._submitButton = this._popupElement.querySelector(".modal__button");
+
+    this._buttonText = this._submitButton.textContent;
   }
 
   open() {

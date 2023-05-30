@@ -5,7 +5,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
-
+import { api } from "../components/Api.js";
 import FormValidator from "../components/FormValidator.js";
 import {
   initialCards,
@@ -47,7 +47,6 @@ const createCard = (cardData) => {
 
 const newCardSection = new Section(
   {
-    items: initialCards,
     renderer: (cardData) => {
       const card = createCard(cardData);
       newCardSection.addItem(card);
@@ -55,12 +54,13 @@ const newCardSection = new Section(
   },
   ".cards__list"
 );
-newCardSection.renderItems();
+
 ///////////////////////////////////
 
 const newUserInfo = new UserInfo({
   nameSelector: ".profile__title",
   jobSelector: ".profile__description",
+  avatarSelector: ".profile__picture",
 });
 
 const newProfileModal = new PopupWithForm("#edit-modal", (values) => {
@@ -99,3 +99,7 @@ editProfileModalButton.addEventListener("click", () => {
 });
 
 */
+
+api.getInitialCards().then((cardsData) => {
+  newCardSection.renderItems(cardsData);
+});
