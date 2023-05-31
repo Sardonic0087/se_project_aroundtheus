@@ -100,6 +100,7 @@ editProfileModalButton.addEventListener("click", () => {
 
 */
 
-api.getInitialCards().then((cardsData) => {
+api.getAppInfo().then(([cardsData, user]) => {
   newCardSection.renderItems(cardsData);
+  newUserInfo.setUserInfo(user.name, user.about, user.avatar);
 });

@@ -1,6 +1,6 @@
 class Api {
-  constructor({ baseurl, headers }) {
-    this._baseUrl = baseurl;
+  constructor({ baseUrl, headers }) {
+    this._baseUrl = baseUrl;
     this._headers = headers;
   }
 
